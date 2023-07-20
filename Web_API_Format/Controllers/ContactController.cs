@@ -1,37 +1,31 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Web_API_Format.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using Web_API_Format.Dtos;
 
-namespace Web_API_Format.Controllers
+namespace Web_API_Format.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ContactController : ControllerBase
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class ContactController : ControllerBase
+	[HttpGet("")]
+	public List<ContactDto> GetContacts()
 	{
-		[HttpGet("")]
-		public List<ContactDto> GetContacts()
+		return new List<ContactDto>()
 		{
-			return new List<ContactDto>()
+			new ContactDto
 			{
-				new ContactDto
-				{
-					Id = 1,
-					Firstname = "Tural",
-					Lastname="Novruzov",
-					PAN="4169711122526996"
-				},
-				new ContactDto
-				{
-					Id = 2,
-					Firstname = "Kamran",
-					Lastname="Karimzada",
-					PAN="4169717152527996"
-				},
-			};
-
-
-
-		}
+				Id = 1,
+				Firstname = "Tural",
+				Lastname="Novruzov",
+				PAN="4169711122526996"
+			},
+			new ContactDto
+			{
+				Id = 2,
+				Firstname = "Kamran",
+				Lastname="Karimzada",
+				PAN="4169717152527996"
+			},
+		};
 	}
 }
